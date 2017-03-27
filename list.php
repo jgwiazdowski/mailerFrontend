@@ -21,6 +21,27 @@ switch($_GET['type']){
     }
     case 'user' : {
         echo '<p>List of ' . $_GET["type"] . 's</p>';
+        $users = array();
+        foreach (getUsers($pdo) as $user){
+            array_push($users, $user);
+        }
+
+        $final = array();
+        foreach($users as $user){
+            $final[$user['domain_id']][] = $user;
+        }
+        $tempDomain = '';
+        foreach($final as $group){
+            foreach($group as $key =>$g){
+                if ($key == 0){
+                    $tempDomain = getDomainById($pdo, $g ['domain_id'])['name'];
+                    echo '<p class="lead"><strong>' . $tempDomain . '</strong></p>';
+                    echo '<ul>';
+                }
+                echo '<li> ' . $g['email'] .  ' </li>';
+            }
+            echo '</ul>';
+        }
         break;
 
     }

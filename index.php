@@ -8,5 +8,5 @@ require_once 'db.php';
 require_once 'functions.php';
 require_once 'header.php';
 
-echo 'aasd';
+echo '<p>Lorem ipsum sit dolor amet</p>';
 require_once 'footer.php';

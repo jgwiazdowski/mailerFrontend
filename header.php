@@ -29,7 +29,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="add.php?type=domain">Domain</a></li>
                             <li><a href="add.php?type=user">User</a></li>
-                            <li><a href="add.php?type=alias">Alias</a></li>
+<!--                            <li><a href="add.php?type=alias">Alias</a></li>-->
                         </ul>
                     </li>
 
@@ -38,7 +38,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="list.php?type=domain">Domain</a></li>
                             <li><a href="list.php?type=user">User</a></li>
-                            <li><a href="list.php?type=alias">Alias</a></li>
+<!--                            <li><a href="list.php?type=alias">Alias</a></li>-->
                         </ul>
                     </li>
                 </ul>

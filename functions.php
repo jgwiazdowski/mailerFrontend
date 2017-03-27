@@ -22,3 +22,27 @@ function getDomains($pdo){
     return $domains;
 }
 
+
+function insertUser($pdo, $user, $password, $domainId){
+    $domainName = getDomainById($pdo, $domainId)['name'];
+
+    $stmt = $pdo->prepare("INSERT INTO virtual_users(domain_id, password, email) VALUES(?, ENCRYPT(?, CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), ?)");
+    $stmt->execute(array(
+        $domainId,
+        $password,
+        $user . '@' . $domainName
+    ));
+}
+
+function getDomainById($pdo, $domainId){
+    $sql = 'SELECT * FROM virtual_domains where id = ' . $domainId;
+    $domain = $pdo->query($sql);
+    return $domain->fetch();
+}
+
+
+function getUsers($pdo){
+    $sql = "SELECT * FROM virtual_users";
+    $domains = $pdo->query($sql);
+    return $domains;
+}
